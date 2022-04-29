@@ -2,12 +2,14 @@ package com.sungchul.etc.user.controller;
 
 
 import com.sungchul.etc.common.ResponseAPI;
+import com.sungchul.etc.config.jwt.util.JwtTokenUtil;
 import com.sungchul.etc.user.service.UserService;
 import com.sungchul.etc.user.vo.UserVO;
 import io.swagger.annotations.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,6 +25,9 @@ import java.util.Map;
 public class UserController {
 
     UserService userService;
+
+    JwtTokenUtil jwtTokenUtil;
+
 
     @PostMapping("/user")
     @ApiOperation(
@@ -47,6 +52,15 @@ public class UserController {
         }else{
             hashMap.put("insert status" , "fail");
         }
+        responseAPI.setData(hashMap);
+        return new ResponseEntity<>(responseAPI, HttpStatus.OK);
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<ResponseAPI> getUserInfo(){
+        ResponseAPI responseAPI = new ResponseAPI();
+        HashMap<String,Object> hashMap = new HashMap<>();
+        hashMap.put("userInfo",jwtTokenUtil.getUserInfo());
         responseAPI.setData(hashMap);
         return new ResponseEntity<>(responseAPI, HttpStatus.OK);
     }

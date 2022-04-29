@@ -28,6 +28,11 @@ spring :
       max-file-size: 10MB
       max-request-size: 10MB
       location: C:\\IntellijProject\\sungchul_ETC\\file
+    encoding :
+      encoding :
+        charset : UTF-8
+        force : true
+
   jackson:
     default-property-inclusion: NON_NULL
 server :
