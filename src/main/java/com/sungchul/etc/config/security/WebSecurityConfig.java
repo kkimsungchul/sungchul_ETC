@@ -59,19 +59,27 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 // dont authenticate this particular request
                 .authorizeRequests()
-                .antMatchers("/","/csrf","/authenticate","/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**").permitAll()
+                .antMatchers("/","/csrf","/authenticate","/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**","/login","/logout","/home").permitAll()
+                .antMatchers("/camping").permitAll()
                 .antMatchers("/user","/user/**").hasRole("ADMIN")
                 // all other requests need to be authenticated
                 .anyRequest()
                 .authenticated()
                 .and()
+
                 // make sure we use stateless session; session won't be used to
                 // store user's state.
+                //exceptionHandling() , authenticationEntryPoint(jwtAuthenticationEntryPoint) 이 두개를 추가하면 Springsecurity 의 기본 로그인 페이지를 사용 못함
+                //해당 옵션을 제외하면 기본로그인 페이지를 사용할 순 있지만, 권한이 없는 페이지 또는 api 접근시에 401 메시지가 아닌 로그인 페이지를 리턴홤
                 .exceptionHandling()
                 .authenticationEntryPoint(jwtAuthenticationEntryPoint)
                 .and()
+
                 .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
+                .formLogin();
+
 
         // Add a filter to validate the tokens with every request
         httpSecurity.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

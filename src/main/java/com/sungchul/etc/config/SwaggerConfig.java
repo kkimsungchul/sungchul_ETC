@@ -30,7 +30,8 @@ public class SwaggerConfig {
                         new Tag("UserController","User Manager Controller"),
                         new Tag("JwtAuthenticationController","Jwt Manager Controller"),
                         new Tag("FindTextController","FindText Manager Controller"),
-                        new Tag("SqlController" , "Sql Manager Controller")
+                        new Tag("SqlController" , "Sql Manager Controller"),
+                        new Tag("CampingController" , "Camping Manager Controller")
                 )
                 .apiInfo(apiInfo())
                 .select()

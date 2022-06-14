@@ -51,6 +51,8 @@ dependencies {
     // https://mvnrepository.com/artifact/io.jsonwebtoken/jjwt
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
+    //jsoup 사용을 위해 추가 (파싱)
+    compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
 }
 
 bootWar{
