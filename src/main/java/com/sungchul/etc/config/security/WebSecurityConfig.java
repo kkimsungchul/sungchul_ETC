@@ -61,6 +61,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/","/csrf","/authenticate","/v2/api-docs", "/configuration/**", "/swagger*/**", "/webjars/**","/login","/logout","/home").permitAll()
                 .antMatchers("/camping").permitAll()
+                .antMatchers("/test" , "/test/**").permitAll()
                 .antMatchers("/user","/user/**").hasRole("ADMIN")
                 // all other requests need to be authenticated
                 .anyRequest()

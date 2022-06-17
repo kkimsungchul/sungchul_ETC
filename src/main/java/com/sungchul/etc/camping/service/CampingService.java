@@ -10,16 +10,13 @@ import org.springframework.stereotype.Service;
 @Service("CampingService")
 public class CampingService {
 
-    public void getReservationList(){
-        String url ="http://r.camperstory.com/resMain.hbb?reserve_path=RP&campseq=3449#20220622^20220623^1";
-
-        try{
+    public void getReservationList() {
+        String url = "http://r.camperstory.com/resMain.hbb?reserve_path=RP&campseq=3449#20220622^20220623^1";
+        try {
             Document doc = Jsoup.connect(url).get();
             System.out.println(doc.text());
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-
     }
 }

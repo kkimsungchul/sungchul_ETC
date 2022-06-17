@@ -27,11 +27,12 @@ public class SwaggerConfig {
     public Docket api(){
         return new Docket(DocumentationType.SWAGGER_2)
                 .tags(
-                        new Tag("UserController","User Manager Controller"),
-                        new Tag("JwtAuthenticationController","Jwt Manager Controller"),
-                        new Tag("FindTextController","FindText Manager Controller"),
-                        new Tag("SqlController" , "Sql Manager Controller"),
-                        new Tag("CampingController" , "Camping Manager Controller")
+                        new Tag("UserController","User Manager TestController"),
+                        new Tag("JwtAuthenticationController","Jwt Manager TestController"),
+                        new Tag("FindTextController","FindText Manager TestController"),
+                        new Tag("SqlController" , "Sql Manager TestController"),
+                        new Tag("CampingController" , "Camping Manager TestController"),
+                        new Tag("TestController" , "Test Manager TestController")
                 )
                 .apiInfo(apiInfo())
                 .select()

@@ -39,7 +39,14 @@ server :
   port : 8080
   session:
     timeout : 600
-
+  error:
+    path: /error
+    include-message : always
+    include-binding-errors: always
+    include-stacktrace: always
+    include-exception: true
+    whitelabel:
+      enabled: true
 
 mybatis:
   #config-location : classpath:mybatis-config.xml
