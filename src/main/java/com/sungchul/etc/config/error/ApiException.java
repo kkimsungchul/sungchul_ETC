@@ -1,6 +1,7 @@
-import org.springframework.http.HttpStatus;
+package com.sungchul.etc.config.error;
 
-import com.kt.dspace.portal.message.manage.DbMessageManager;
+
+import org.springframework.http.HttpStatus;
 
 public class ApiException extends RuntimeException
 {
@@ -44,7 +45,7 @@ public class ApiException extends RuntimeException
     public ApiException(HttpStatus status, String msgCode) {
         this.status = status;
         this.msgCode = msgCode;
-        this.msgDesc = DbMessageManager.getMessage(msgCode, "ko");
+        this.msgDesc = "";
     }
 
     /**
@@ -56,11 +57,8 @@ public class ApiException extends RuntimeException
     public ApiException(HttpStatus status, String msgCode, Object msgParam) {
         this.status = status;
         this.msgCode = msgCode;
-        if(msgCode != null) {
-            this.msgDesc = DbMessageManager.getMessage(msgCode, msgParam, "ko");
-        } else {
-            this.msgDesc = (String) msgParam;
-        }
+        this.msgDesc = (String) msgParam;
+
     }
 
     /**
@@ -72,7 +70,7 @@ public class ApiException extends RuntimeException
     public ApiException(HttpStatus status, String msgCode, Object[] msgParams) {
         this.status = status;
         this.msgCode = msgCode;
-        this.msgDesc = DbMessageManager.getMessage(msgCode, msgParams, "ko");
+        this.msgDesc = "";
     }
 
     public String getMsgDesc()
