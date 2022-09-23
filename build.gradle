@@ -30,16 +30,16 @@ dependencies {
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
     //swagger 사용을 위해 추가
-    compile 'io.springfox:springfox-swagger2:2.9.2'
-    compile 'io.springfox:springfox-swagger-ui:2.9.2'
+    implementation 'io.springfox:springfox-swagger2:2.9.2'
+    implementation 'io.springfox:springfox-swagger-ui:2.9.2'
 
     //log4j
     implementation 'org.bgee.log4jdbc-log4j2:log4jdbc-log4j2-jdbc4.1:1.16'
 
     //mybatis 사용을 위해 추가
-    compile 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
-    compile 'org.springframework.boot:spring-boot-starter-jdbc'
-    compile 'mysql:mysql-connector-java'
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'mysql:mysql-connector-java'
 
 
     //Springsecurity
@@ -52,7 +52,7 @@ dependencies {
     implementation group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 
     //jsoup 사용을 위해 추가 (파싱)
-    compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
+    implementation group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
 }
 
 bootWar{
