@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 
 
@@ -13,32 +15,33 @@ import java.util.Calendar;
 public class DateService {
     /*yyyymmdd 로 현재 날짜 리턴*/
     public String getDate() {
-        String value = "";
-        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyyMMdd");
-        value = formatter.format(new java.util.Date());
-        return value;
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        String nowString = now.format(dateTimeFormatter);
+        return nowString;
     }
 
     /*yyyy 로 현재 연도 리턴*/
     public String getYear() {
-        String value = "";
-        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("yyyy");
-        value = formatter.format(new java.util.Date());
-        return value;
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy");
+        String nowString = now.format(dateTimeFormatter);
+        return nowString;
     }
     /*HHmmss 로 현재 시간 리턴*/
     public String getTime() {
-        String value = "";
-        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat("HHmmss");
-        value = formatter.format(new java.util.Date());
-        return value;
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HHmmss");
+        String nowString = now.format(dateTimeFormatter);
+        return nowString;
     }
     /*지정한 형식으로 출력*/
     public String getTime(String strformat){
-        String value = "";
-        java.text.SimpleDateFormat formatter = new java.text.SimpleDateFormat(strformat);
-        value = formatter.format(new java.util.Date());
-        return value;
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern(strformat);
+        String nowString = now.format(dateTimeFormatter);
+        return nowString;
     }
 
     /*현재 요일을 반환*/
