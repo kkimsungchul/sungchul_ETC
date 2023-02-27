@@ -24,7 +24,7 @@ public class ResponseAPI {
     private String message;
 
     @ApiModelProperty(required = true, name = "data", value = "데이터", notes = "데이터", example = "")
-    private HashMap<String,Object> data;
+    private Object data;
 
     @ApiModelProperty(required = true, name = "timestamp", value = "시간", notes = "시간", example = "")
     private LocalDateTime timestamp;
