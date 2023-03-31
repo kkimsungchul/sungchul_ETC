@@ -28,6 +28,7 @@ dependencies {
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.projectlombok:lombok'
     providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     //swagger 사용을 위해 추가
     implementation 'io.springfox:springfox-swagger2:2.9.2'
