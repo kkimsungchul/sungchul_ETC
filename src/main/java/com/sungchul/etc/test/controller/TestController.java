@@ -3,11 +3,15 @@ package com.sungchul.etc.test.controller;
 
 import com.sungchul.etc.common.ResponseAPI;
 import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -17,6 +21,45 @@ import java.util.HashMap;
 @RequestMapping("/test")
 public class TestController {
 
+
+    //http://localhost:8000/test/test/get1/dept/김성철
+    @GetMapping("/test/get1/{hihi}/{byebye}")
+    public void getTestPathVariable(@PathVariable String hihi , @PathVariable String byebye){
+        System.out.println("### hihi : " + hihi);
+        System.out.println("### byebye : " + byebye);
+    }
+
+    //http://localhost:8000/test/test/get2?hihi=zzz&byebye=ggg
+    @GetMapping("/test/get2")
+    public void getTestRequestParam(@RequestParam("hihi") String hihi , @RequestParam("byebye") String byebye){
+        System.out.println("### hihi : " + hihi);
+        System.out.println("### byebye : " + byebye);
+    }
+    //http://localhost:8000/test/test/get3?hihi=zzz
+    @GetMapping("/test/get3")
+    public void getTestHttpServletRequest(HttpServletRequest request){
+        System.out.println("### hihi : " + request.getParameter("hihi"));
+    }
+
+
+    @GetMapping(path = "/test/get5/**")
+    public void getImdsUserListBySearchValueForLoginId(HttpServletRequest request){
+        String searchColumn = "dept";
+        String searchValue = getRequestWithPath(request, searchColumn);
+
+    }
+    private String getRequestWithPath(HttpServletRequest request, String column) {
+        System.out.println("### request.getContextPath() : " + request.getContextPath());
+        String param = request.getRequestURI().split(request.getContextPath()+"/"+column+"/")[1];
+        System.out.println("### param : " + param);
+        try {
+            param = URLDecoder.decode(param, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        System.out.println("### param : " + param);
+        return param;
+    }
 
     @GetMapping("/test/{num}")
     public ResponseEntity<ResponseAPI> getReservationList(@PathVariable int num){
